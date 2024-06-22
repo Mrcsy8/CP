@@ -2,41 +2,61 @@
 
 using namespace std;
 
-vector<int> arr;
 vector<int> operations;
-vector<pair<int,int>> result;
+vector<vector<vector<int>>> result;
 
 int main()
 {
     int t;
     cin >> t;
 
+    result.resize(t);
     for(int i = 0; i < t; i++)
     {
         int n;
         cin >> n;
 
+        vector<int> a_i;
         for(int j = 0; j < n; j++)
         {
             int a;
             cin >> a;
-            arr.push_back(a);
+            a_i.push_back(a);
         }
-        int min = *min_element(arr.begin(), arr.end());
-        int ops = n - count(arr.begin(), arr.end(), min);
-        
+        auto min_ele = min_element(a_i.begin(), a_i.end());
+        int ops = 0;
+        int index = (int)distance(a_i.begin(), min_ele);
+        for(int j = 0; j < n; j++)
+        {
+
+            if(j != index)
+            {
+                if(index%2 == j%2)
+                {
+                    result[i].push_back({index + 1, j + 1, *min_ele, *min_ele});
+                }
+                else
+                {
+                    result[i].push_back({index + 1, j + 1, *min_ele, *min_ele+1});
+                }
+                
+                ops++;
+            }
+        }
         operations.push_back(ops);
-        result.push_back(make_pair(n, min));
     }
 
     for(int i = 0; i < t; i++)
     {
         cout << operations[i] << "\n";
-        for(int j = 0; j < result[i].first; j++)
+        for(auto i : result[i])
         {
-            cout << result[i].second << " ";
+            for(auto j : i)
+            {
+                cout << j << " ";
+            }
+            cout << "\n";
         }
-        cout << "\n";
     }
     
     return 0;
