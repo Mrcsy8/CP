@@ -2,8 +2,8 @@
 
 using namespace std;
 
-#define REP(i, a, b) for(int i = a; i < b; i++)
-#define REPI(i, a, b) for(int i = a; i <= b; i++)
+typedef long long ll;
+#define REP(i, a, b) for(int i = a; i <= b; i++)
 
 int main()
 {
