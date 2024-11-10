@@ -19,7 +19,7 @@ ll gcd(ll a, ll b)
 
 // Primes up to n, O(n lg n)
 vector<bool> prime;
-void primes_to_n(vector<bool> &prime, ll n)
+void primes_to_n(ll n)
 {
     prime.resize(n + 1, true);
     prime[0] = false;
@@ -75,3 +75,10 @@ ll comb_num(ll n, ll m)
 {
     return (factorial[n] * inverse_factorial[n - m] % MOD) * inverse_factorial[m] % MOD;
 }
+//
+const int MAXN = 1e7, M = 1e9 + 7;
+int INV[MAXN];
+// ...
+INV[1] = 1;
+for (ll a = 2; a < MAXN; a++)
+    INV[a] = M - (ll)(M / a) * INV[M % a] % M;
