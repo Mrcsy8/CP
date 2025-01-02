@@ -56,6 +56,7 @@ ll power(ll a, ll b)
 vector<ll> factorial;
 void fact_to_n(ll n)
 {
+    factorial.resize(n + 1);
     factorial[0] = 1;
     for (int i = 1; i <= n; i++)
         factorial[i] = factorial[i - 1] * i % MOD;
