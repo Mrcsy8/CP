@@ -25,6 +25,13 @@ int main()
     cin >> t;
     while (t--)
     {
+        int n;
+        cin >> n;
+        int res = 0;
+        res += n / 4;
+        n = n % 4;
+        res += n / 2;
+        cout << res << "\n";
     }
     return 0;
 }

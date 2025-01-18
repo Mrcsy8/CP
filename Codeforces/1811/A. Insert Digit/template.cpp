@@ -25,6 +25,26 @@ int main()
     cin >> t;
     while (t--)
     {
+        int d;
+        int n;
+        string s;
+        cin >> n >> d;
+        cin >> s;
+        bool use = false;
+        forn(i, n)
+        {
+            if (!use && d > s[i] - '0')
+            {
+                cout << d;
+                use = true;
+            }
+            cout << s[i];
+        }
+        if (!use)
+        {
+            cout << d;
+        }
+        cout << "\n";
     }
     return 0;
 }

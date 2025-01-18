@@ -25,6 +25,15 @@ int main()
     cin >> t;
     while (t--)
     {
+        int a, b;
+        cin >> a >> b;
+        if (a % 2 == 1)
+            cout << "NO";
+        else if (b % 2 == 1 && (a % 2 == 1 || a == 0))
+            cout << "NO";
+        else
+            cout << "YES";
+        cout << "\n";
     }
     return 0;
 }

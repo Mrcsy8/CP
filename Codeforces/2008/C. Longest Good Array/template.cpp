@@ -25,6 +25,16 @@ int main()
     cin >> t;
     while (t--)
     {
+        ll l, r;
+        cin >> l >> r;
+        ll sum = 0, res = 0, i = 1;
+        while (r - l >= sum)
+        {
+            res++;
+            sum += i;
+            i++;
+        }
+        cout << res << "\n";
     }
     return 0;
 }

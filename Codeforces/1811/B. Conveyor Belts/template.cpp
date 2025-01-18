@@ -25,6 +25,27 @@ int main()
     cin >> t;
     while (t--)
     {
+        ll n, x1, y1, x2, y2;
+        cin >> n >> x1 >> y1 >> x2 >> y2;
+        ll l, r;
+        if (x1 + y1 > n + 1)
+        {
+            l = n - max(x1, y1) + 1;
+        }
+        else
+        {
+            l = min(x1, y1);
+        }
+        if (x2 + y2 > n + 1)
+        {
+            r = n - max(x2, y2) + 1;
+        }
+        else
+        {
+            r = min(x2, y2);
+        }
+
+        cout << abs(r - l) << "\n";
     }
     return 0;
 }

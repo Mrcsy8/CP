@@ -25,6 +25,23 @@ int main()
     cin >> t;
     while (t--)
     {
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
+        int ceros = 0, unos = 0;
+        forn(i, n)
+        {
+            if (s[i] == '0')
+                ceros++;
+            else
+                unos++;
+        }
+        if (unos % 4 == 0 && pow((unos / 4) - 1, 2) == ceros)
+            cout << "Yes";
+        else
+            cout << "No";
+        cout << "\n";
     }
     return 0;
 }
