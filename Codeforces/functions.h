@@ -35,7 +35,6 @@ void primes_to_n(ll n)
 }
 
 // a to the power of b, O(lg b)
-int MOD = 1e2;
 ll power(ll a, ll b)
 {
     if (b == 0)
