@@ -1,13 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-#define REP(i, a, b) for (int i = a; i < b; i++)
-#define F first
-#define S second
-#define PB push_back
-#define MP make_pair
 
-// NUMBER THEORY
+#define forsn(i, s, n) for (int i = int(s); i < int(n); i++)
+#define dforsn(i, s, n) for (int i = int(n) - 1; i >= int(s); i--)
+#define forn(i, n) forsn(i, 0, n)
+#define dforn(i, n) dforsn(i, 0, n)
+
+#define pb push_back
+#define pf push_front
+#define mp make_pair
+#define fst first
+#define snd second
+
+#define ALL(x) (x).begin(), (x).end()
+#define SZ(x) int((x).size())
+#define DBG(x) cout<<#x<<" = "<<(x)<<endl;
+
+typedef long long ll;
 
 // Greatest Common Divisor, O(lg a + lg b)
 ll gcd(ll a, ll b)
