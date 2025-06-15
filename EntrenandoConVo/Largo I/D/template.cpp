@@ -15,13 +15,24 @@ using namespace std;
 #define ALL(x) (x).begin(), (x).end()
 #define SZ(x) int((x).size())
 #define DBG(x) cout<<#x<<" = "<<(x)<<endl;
-#define PRT(x) cout<<x<<"\n";
 
 typedef long long ll;
 
-int main(){
+int main()
+{
     ios::sync_with_stdio(0);
     cin.tie(0);
-    
+    int t;
+    int n, m;
+    cin >> n >> m;
+    ll res = m%2;
+    m += m%2;
+    while(m > n)
+    {
+        res = res + 1 + m%2;
+        m = m/2 + m%2;
+    }
+    res += n - m;
+    cout << res << "\n";
     return 0;
 }

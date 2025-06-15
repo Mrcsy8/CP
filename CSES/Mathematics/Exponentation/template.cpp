@@ -15,13 +15,39 @@ using namespace std;
 #define ALL(x) (x).begin(), (x).end()
 #define SZ(x) int((x).size())
 #define DBG(x) cout<<#x<<" = "<<(x)<<endl;
-#define PRT(x) cout<<x<<"\n";
+#define PNT(x) cout<<x<<"\n";
 
 typedef long long ll;
 
-int main(){
+const ll MOD = 1e9 + 7;
+
+ll power(ll a, ll b)
+{
+    if (b == 0)
+        return 1;
+    if (b % 2 == 0)
+    {
+        ll p = power(a, b / 2);
+        return p * p % MOD;
+    }
+    else
+    {
+        ll p = power(a, (b - 1) / 2);
+        return p * p % MOD * a % MOD;
+    }
+}
+
+int main()
+{
     ios::sync_with_stdio(0);
     cin.tie(0);
-    
+    int n;
+    cin >> n;
+    while(n--)
+    {
+        ll a, b;
+        cin >> a >> b;
+        PNT(power(a,b));
+    }
     return 0;
 }

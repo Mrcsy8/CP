@@ -15,13 +15,38 @@ using namespace std;
 #define ALL(x) (x).begin(), (x).end()
 #define SZ(x) int((x).size())
 #define DBG(x) cout<<#x<<" = "<<(x)<<endl;
-#define PRT(x) cout<<x<<"\n";
 
 typedef long long ll;
 
-int main(){
+vector<ll> factors(ll n)
+{
+    vector<ll> f;
+    for(ll x = 2; x*x <= n; x++)
+    {
+        while(n%x == 0)
+        {
+            f.pb(x);
+            n /= x;
+        }
+    }
+    if(n > 1)
+    {
+        f.pb(n);
+    }
+    return f;
+}
+
+int main()
+{
     ios::sync_with_stdio(0);
     cin.tie(0);
-    
+    int n;
+    ll k;
+    cin >> n >> k;
+    vector<ll> a(n);
+    forn(i,n)
+    {
+        cin >> a[i];
+    }
     return 0;
 }
