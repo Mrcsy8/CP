@@ -37,23 +37,22 @@ int main(){
     }
     ll res = 1;
     vector<ll> part_gcd_l(n), part_gcd_r(n);
-    ll g = a[0];
-    part_gcd_l[0] = g;
+    part_gcd_l[0] = a[0];
     forsn(i,1,n){
-        part_gcd_l[i] = gcd(g, a[i]);
-        g = part_gcd_l[i];
+        part_gcd_l[i] = gcd(part_gcd_l[i-1], a[i]);
     }
-    g = a[n-1];
-    part_gcd_r[n-1] = g;
+    part_gcd_r[n-1] = a[n-1];
     dforsn(i,0,n-1){
-        part_gcd_r[i] = gcd(g, a[i]);
-        g = part_gcd_r[i];
+        part_gcd_r[i] = gcd(part_gcd_r[i+1], a[i]);
     }
     res = 1;
     forn(i,n){
         ll u;
-        if(i - 1 < 0){
+        if(i == 0){
             u = part_gcd_r[1];
+        }
+        else if(n-1 == i){
+            u = part_gcd_l[i-1];
         }
         else {
             u = gcd(part_gcd_l[i-1],part_gcd_r[i+1]);
