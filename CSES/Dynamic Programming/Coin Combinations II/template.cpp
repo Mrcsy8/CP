@@ -22,22 +22,24 @@ typedef long long ll;
 const ll MOD = 1e9 + 7;
 
 int n, x;
-vector<ll> dp;
+vector<map<ll,ll>> dp;
 vector<ll> c;
-set<ll> coins;
+ll res = 0;
 
-ll solve(int r){
-    if(r < 0){
-        return 0;
+void solve(int r){
+    ll sum = x;
+    for(auto par : dp[r-1]){
+        if(par.snd != 0){
+            ll sum0 = par.fst;
+            while(x > 0){
+                dp[r][par.fst]++;
+                sum0 -= c[r-1];
+            }
+            if(!sum0){
+                res += par.snd % MOD;
+            }
+        }
     }
-    if(dp[r] != -1){
-        return dp[r];
-    }
-    ll res = (coins.find(r) != coins.end());
-    forn(i,n){
-        res = (res + solve(r-c[i])) % MOD;
-    }
-    return res;
 }
 
 int main(){
@@ -45,16 +47,11 @@ int main(){
     cin.tie(0);
     cin >> n >> x;
     c.resize(n);
-    dp.resize(x + 1,-1);
-    dp[0] = 0;
+    dp.resize(n+1, map<ll,ll>());
+    dp[0][x]++;
     forn(i,n){
-        cin >> c[i];
-        coins.insert(c[i]);
+        solve(i+1);
     }
-    forn(i,x + 1){
-        if(dp[i] == -1) 
-        dp[i] = solve(i);
-    }
-    PRT(dp[x]);
+    PRT(res);
     return 0;
 }
