@@ -19,34 +19,25 @@ using namespace std;
 
 typedef long long ll;
 
-const int N = 1e5;
-const ll MOD = 1e9 + 7;
-
-int x[N];
-ll res = 1;
-map<int,ll> dp;
-
-void f(int i){
-    if(x[i] == 0){
-        
-    }
-    else{
-        
-    }
-}
-
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int n, m;
-    cin >> n >> m;
+    int n, k;
+    cin >> n >> k;
+    vector<ll> x(n);
     forn(i,n){
         cin >> x[i];
-        x[i]--;
     }
-    forn(i,n){
-        f(i);
+    long double sum = 0;
+    vector<ll> res;
+    forn(i,k){
+        sum += (long double)x[i] / k;
     }
-    PRT(res);
+    res.pb(abs())
+    forsn(i,k,n){
+        sum -= (long double)x[i - k] / k;
+        sum += (long double)x[i] / k;
+
+    }
     return 0;
 }

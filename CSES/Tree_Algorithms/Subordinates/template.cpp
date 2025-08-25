@@ -19,34 +19,45 @@ using namespace std;
 
 typedef long long ll;
 
-const int N = 1e5;
-const ll MOD = 1e9 + 7;
+const int N = 2e5;
 
-int x[N];
-ll res = 1;
-map<int,ll> dp;
+vector<int> ady[N];
+int sons[N];
 
-void f(int i){
-    if(x[i] == 0){
-        
+int calc(int x){
+    if(sons[x] != -1){
+        return sons[x];
     }
-    else{
-        
+    if(ady[x].size() == 0){
+        sons[x] = 0;
+        return sons[x];
     }
+    int res = 0;
+    for(auto u : ady[x]){
+        res += calc(u) + 1;
+    }
+    sons[x] = res;
+    return sons[x];
 }
 
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int n, m;
-    cin >> n >> m;
-    forn(i,n){
-        cin >> x[i];
-        x[i]--;
+    memset(sons, -1, sizeof(sons));
+    int n;
+    cin >> n;
+    forn(i,n-1){
+        int s;
+        cin >> s;
+        s--;
+        ady[s].pb(i+1);
     }
     forn(i,n){
-        f(i);
+        calc(i);
     }
-    PRT(res);
+    forn(i,n){
+        cout << sons[i] << " ";
+    }
+    cout << "\n";
     return 0;
 }

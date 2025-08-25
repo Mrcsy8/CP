@@ -19,40 +19,35 @@ using namespace std;
 
 typedef long long ll;
 
-vector<vector<int>> grid;
-int n;
-
-int dx[8] = {1, 1, -1, -1, 2, 2, -2, -2};
-int dy[8] = {2, -2, 2, -2, 1, -1, 1, -1};
-
-void proc(queue<pair<int,int>> &q){
-    pair<int,int> e = q.front();
-    q.pop();
-    for (int k = 0; k < 8; k++) {
-        int nx = e.fst + dx[k];
-        int ny = e.snd + dy[k];
-        if (nx >= 0 && nx < n && ny >= 0 && ny < n && grid[nx][ny] == -1) {
-            grid[nx][ny] = grid[e.fst][e.snd] + 1;
-            q.push(mp(nx, ny));
-        }
-    }
-}
-
-void solve(){
-    queue<pair<int,int>> q;
-    q.push(mp(0,0));
-    while(!q.empty()){
-        proc(q);
-    }
-}
-
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
+    int n;
     cin >> n;
-    grid.resize(n,vector<int>(n,-1));
-    grid[0][0] = 0;
-    solve();
+    vector<set<int>> v(n);
+    vector<vector<int>> grid(n, vector<int>(n));
+    forn(i,n){
+        set<int> h;
+        forn(k,i + n + 1){
+            h.insert(k);
+        }
+        forn(j,n){
+            if(i == 0){
+                forn(k,n + n + 1){
+                    v[j].insert(k);
+                }
+            }
+            set<int> hv;
+            for(auto e : h){
+                if(v[j].find(e) != v[j].end()){
+                    hv.insert(e);
+                }
+            }
+            grid[i][j] = *hv.begin();
+            v[j].erase(grid[i][j]);
+            h.erase(grid[i][j]);
+        }
+    }
     forn(i,n){
         forn(j,n){
             cout << grid[i][j] << " ";

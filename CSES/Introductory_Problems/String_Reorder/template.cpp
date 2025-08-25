@@ -19,34 +19,40 @@ using namespace std;
 
 typedef long long ll;
 
-const int N = 1e5;
-const ll MOD = 1e9 + 7;
+map<char,int> m;
 
-int x[N];
-ll res = 1;
-map<int,ll> dp;
-
-void f(int i){
-    if(x[i] == 0){
-        
+char solve(char dist = -1){
+    for(auto [k,v] : m){
+        if(dist != k && v != 0){
+            return k;
+        }
     }
-    else{
-        
-    }
+    return -1;
 }
 
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int n, m;
-    cin >> n >> m;
-    forn(i,n){
-        cin >> x[i];
-        x[i]--;
+    string s;
+    cin >> s;
+    forn(i,s.size()){
+        m[s[i]]++;
     }
-    forn(i,n){
-        f(i);
+    vector<char> res(s.size());
+    forn(i,res.size()){
+        if(i = 0){
+            solve();
+        }
+        res[i] = solve(res[i-1]);
+        if(res[i] == -1){
+            PRT("NO");
+            break;
+        }
+        m[res[i]]--;
     }
-    PRT(res);
+    forn(i,res.size()){
+        cout << res[i];
+    }
+    cout << "\n";
     return 0;
 }

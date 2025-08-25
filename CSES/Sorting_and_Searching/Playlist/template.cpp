@@ -19,34 +19,24 @@ using namespace std;
 
 typedef long long ll;
 
-const int N = 1e5;
-const ll MOD = 1e9 + 7;
-
-int x[N];
-ll res = 1;
-map<int,ll> dp;
-
-void f(int i){
-    if(x[i] == 0){
-        
-    }
-    else{
-        
-    }
-}
-
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int n, m;
-    cin >> n >> m;
+    int n;
+    cin >> n;
+    vector<ll> k(n);
     forn(i,n){
-        cin >> x[i];
-        x[i]--;
+        cin >> k[i];
     }
+    map<ll, int> last;
+    int in = 0, res = 1;
     forn(i,n){
-        f(i);
+        if(last.find(k[i]) != last.end()){
+            in = max(in, last[k[i]] + 1);
+        }
+        last[k[i]] = i;
+        res = max(res, i - in + 1);
     }
-    PRT(res);
+    PRT(res);   
     return 0;
 }

@@ -19,34 +19,30 @@ using namespace std;
 
 typedef long long ll;
 
-const int N = 1e5;
 const ll MOD = 1e9 + 7;
 
-int x[N];
-ll res = 1;
-map<int,ll> dp;
-
-void f(int i){
-    if(x[i] == 0){
-        
+long double power(long double a, ll b){
+    if (b == 0)
+        return 1;
+    if (b % 2 == 0)
+    {
+        long double p = power(a, b / 2);
+        return fmodl(p * p, MOD);
     }
-    else{
-        
+    else
+    {
+        long double p = power(a, (b - 1) / 2);
+        return fmodl(fmodl(p * p, MOD) * a, MOD);
     }
 }
 
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int n, m;
-    cin >> n >> m;
-    forn(i,n){
-        cin >> x[i];
-        x[i]--;
-    }
-    forn(i,n){
-        f(i);
-    }
+    ll n;
+    cin >> n;
+    long double r1 = (1+sqrt(5))/2, r2 = (1-sqrt(5))/2;
+    long double res = (pow(r1,n) + pow(r2,n)) / sqrt(5);
     PRT(res);
     return 0;
 }

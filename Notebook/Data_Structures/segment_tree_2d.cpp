@@ -1,4 +1,3 @@
-const int N = 1000;
 ll a[N][N];
 ll st[2*N][2*N];
 #define oper min

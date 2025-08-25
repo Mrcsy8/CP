@@ -1,5 +1,3 @@
-const ll MOD = 1e9 + 7;
-
 vector<ll> factorial;
 void fact_to_n(ll n){
     factorial.resize(n + 1);

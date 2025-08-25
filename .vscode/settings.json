@@ -4,6 +4,7 @@
         "iostream": "cpp",
         "vector": "cpp",
         "map": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "tuple": "cpp"
     }
 }

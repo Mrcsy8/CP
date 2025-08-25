@@ -1,4 +1,7 @@
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
 using namespace std;
 
 #define forsn(i, s, n) for (int i = int(s); i < int(n); i++)
@@ -19,34 +22,35 @@ using namespace std;
 
 typedef long long ll;
 
-const int N = 1e5;
-const ll MOD = 1e9 + 7;
+template <class T>
+using ordered_set = tree<
+    T,
+    null_type,
+    less<T>,
+    rb_tree_tag,
+    tree_order_statistics_node_update 
+>;
 
-int x[N];
-ll res = 1;
-map<int,ll> dp;
-
-void f(int i){
-    if(x[i] == 0){
-        
-    }
-    else{
-        
-    }
-}
+const int N = 2e5;
 
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int n, m;
-    cin >> n >> m;
+    int n;
+    cin >> n;
+    ordered_set<pair<int,int>> s;
     forn(i,n){
-        cin >> x[i];
-        x[i]--;
+        ll x;
+        cin >> x;
+        s.insert(mp(i,x));
     }
     forn(i,n){
-        f(i);
+        int p;
+        cin >> p;
+        p--;
+        auto it = s.find_by_order(p);
+        cout << it->snd << " ";
+        s.erase(it);
     }
-    PRT(res);
     return 0;
 }

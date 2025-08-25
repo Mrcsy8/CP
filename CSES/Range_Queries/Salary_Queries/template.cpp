@@ -19,34 +19,31 @@ using namespace std;
 
 typedef long long ll;
 
-const int N = 1e5;
-const ll MOD = 1e9 + 7;
-
-int x[N];
-ll res = 1;
-map<int,ll> dp;
-
-void f(int i){
-    if(x[i] == 0){
-        
-    }
-    else{
-        
-    }
-}
-
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int n, m;
-    cin >> n >> m;
+    int n, q;
+    cin >> n >> q;
+    vector<ll> p(n);
     forn(i,n){
-        cin >> x[i];
-        x[i]--;
+        cin >> p[i];
     }
-    forn(i,n){
-        f(i);
+    vector<tuple<char,ll,ll>> qu(q);
+    forn(i,q){
+        ll c, a, b;
+        cin >> c >> a >> b;
+        qu[i] = make_tuple(c,a,b);
     }
-    PRT(res);
+    map<pair<ll,ll>,int> m;
+    dforn(i,q){
+        if(get<0>(qu[i]) == '?'){
+            m[mp(get<1>(qu[i]),get<2>(qu[i]))] = 0;
+        }
+        else{
+            for(auto [a,b] : m){
+                if()
+            }
+        }
+    }
     return 0;
 }
